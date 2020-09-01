@@ -1,0 +1,52 @@
+﻿@model VPOC2.Models.IndexViewModel
+
+@{
+    ViewData["Title"] = "List of goodse";
+}
+
+<h2>@ViewData["Title"]</h2>
+<form method="get">
+    <div class="form-group">
+        <label for="Filter.Name"> Matching search</label>
+        <input type="text" name="Filter.Name" value="@Model.Filter.Name" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label for="Filter.MinPrice">Minimum price</label>
+        <input type="number" name="Filter.MinPrice" value="@Model.Filter.MinPrice" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label for="Filter.MaxPrice">Maximum price</label>
+        <input type="number" name="Filter.MaxPrice" value="@Model.Filter.MaxPrice" class="form-control" />
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Search" class="btn btn-outline-secondary" />
+    </div>
+</form>
+
+<p>
+    <a asp-controller="Home" asp-action="Create">Add to</a>
+</p>
+<table class="table">
+    <tr>
+        <th>Model</th>
+        <th>Manufacturer</th>
+        <th>Price</th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model.Products)
+    {
+        <tr>
+            <td>@item.Name</td>
+            <td>@item.Company</td>
+            <td>
+                @item.Price.ToString("c")
+            </td>
+            <td>
+                <a asp-controller="Home" asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-controller="Home" asp-action="Delete" asp-route-id="@item.Id">Delete</a> |
+                <a asp-controller="Home" asp-action="AttachImage" asp-route-id="@item.Id">Picture</a>
+            </td>
+        </tr>
+    }
+</table>
