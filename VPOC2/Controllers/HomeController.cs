@@ -65,6 +65,7 @@ namespace MongoApp.Controllers
             return View(p);
         }
         [HttpPost]
+        
         public async Task<ActionResult> AttachImage(string id, IFormFile uploadedFile)
         {
             if (uploadedFile != null)
