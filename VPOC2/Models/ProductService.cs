@@ -66,6 +66,7 @@ namespace VPOC2.Models
         public async Task Create(Product p)
         {
             await Products.InsertOneAsync(p);
+            var id=p.Id;
         }
         //document update
         public async Task Update(Product p)

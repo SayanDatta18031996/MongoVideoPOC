@@ -72,7 +72,7 @@ namespace MongoApp.Controllers
             {
                 await db.StoreImage(id, uploadedFile.OpenReadStream(), uploadedFile.FileName);
             }
-            return RedirectToAction("Index");
+            return View();
         }
 
         public async Task<ActionResult> GetImage(string id)
@@ -82,7 +82,7 @@ namespace MongoApp.Controllers
             {
                 return NotFound();
             }
-            return File(image, "image/png");
+            return File(image, "video/mp4");
         }
     }
 }
